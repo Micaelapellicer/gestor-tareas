@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header__title">Gestor de Tareas</h1>
+        <p class="header__subtitle">Organizá tu día</p>
+    </header>
+
+    <main class="container">
+
+        <section class="form-section">
+            <input 
+                type="text" 
+                id="inputTarea" 
+                class="input" 
+                placeholder="¿Qué tenés que hacer?"
+            >
+            <button id="btnAgregar" class="btn">Agregar</button>
+        </section>
+
+        <section class="stats">
+            <span class="stats__item">Total: <strong id="statTotal">0</strong></span>
+            <span class="stats__item">Pendientes: <strong id="statPendientes">0</strong></span>
+            <span class="stats__item">Completadas: <strong id="statCompletadas">0</strong></span>
+        </section>
+
+        <section class="lista-section">
+            <ul id="listaTareas" class="lista">
+                <!-- Las tareas se van a generar acá con JavaScript -->
+            </ul>
+
+            <p id="mensajeVacio" class="mensaje-vacio">
+                No hay tareas todavía. ¡Agregá la primera!
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 — Proyecto de práctica</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+/* ============================================
+   RESET
+   ============================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img,
+picture,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* ============================================
+   VARIABLES
+   ============================================ */
+:root {
+    --color-primary: #6366f1;
+    --color-primary-dark: #4f46e5;
+    --color-success: #10b981;
+    --color-danger: #ef4444;
+    --color-bg: #f1f5f9;
+    --color-surface: #ffffff;
+    --color-text: #1e293b;
+    --color-text-muted: #64748b;
+    --color-border: #e2e8f0;
+
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 2.5rem 1rem;
+    text-align: center;
+}
+
+.header__title {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.header__title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: white;
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+.header__subtitle {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* ============================================
+   FORMULARIO
+   ============================================ */
+.form-section {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-surface);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    border-color: var(--color-primary);
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.stats__item {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.stats__item strong {
+    color: var(--color-text);
+}
+
+/* ============================================
+   LISTA DE TAREAS
+   ============================================ */
+.lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tarea {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: opacity 0.2s;
+}
+
+.tarea__checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--color-success);
+    flex-shrink: 0;
+}
+
+.tarea__texto {
+    flex: 1;
+    word-break: break-word;
+}
+
+.tarea__borrar {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--color-danger);
+    background-color: transparent;
+    border: 1px solid var(--color-danger);
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tarea__borrar:hover {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+/* Estado: tarea completada */
+.tarea--completada .tarea__texto {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+.tarea--completada {
+    opacity: 0.65;
+}
+
+/* ============================================
+   MENSAJE VACÍO
+   ============================================ */
+.mensaje-vacio {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-text-muted);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 600px) {
+    .header__title {
+        font-size: 1.5rem;
+    }
+
+    .form-section {
+        flex-direction: column;
+    }
+
+    .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
