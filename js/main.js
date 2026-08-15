@@ -78,13 +78,27 @@ function renderizarTareas() {
         span.className = "tarea__texto";
         span.textContent = tarea.texto;
 
-        // Metemos el checkbox y el span dentro del li (en orden)
+        // Creamos el botón de borrar
+        const btnBorrar = document.createElement("button");
+        btnBorrar.className = "tarea__borrar";
+        btnBorrar.textContent = "Borrar";
+
+        // Cuando se hace click, borramos esta tarea
+        btnBorrar.addEventListener("click", function () {
+            borrarTarea(tarea.id);
+        });
+
+        // Metemos todo dentro del li (en orden)
         li.appendChild(checkbox);
         li.appendChild(span);
+        li.appendChild(btnBorrar);
 
         // Metemos el li dentro de la lista
         listaTareas.appendChild(li);
     });
+
+    // 3. Actualizamos los contadores
+    actualizarStats();
 }
 
 // ============================================
@@ -100,6 +114,40 @@ function completarTarea(id) {
 
     // Redibujamos
     renderizarTareas();
+}
+
+// ============================================
+//   FUNCIÓN: borrar una tarea
+// ============================================
+function borrarTarea(id) {
+    // Nos quedamos solo con las tareas que NO tengan ese id
+    tareas = tareas.filter(function (tarea) {
+        return tarea.id !== id;
+    });
+
+    // Redibujamos
+    renderizarTareas();
+}
+
+// ============================================
+//   FUNCIÓN: actualizar los contadores
+// ============================================
+function actualizarStats() {
+    // Total: cuántas tareas hay
+    const total = tareas.length;
+
+    // Completadas: filtramos las que están completadas y contamos
+    const completadas = tareas.filter(function (tarea) {
+        return tarea.completada === true;
+    }).length;
+
+    // Pendientes: el total menos las completadas
+    const pendientes = total - completadas;
+
+    // Mostramos cada número en su lugar
+    statTotal.textContent = total;
+    statCompletadas.textContent = completadas;
+    statPendientes.textContent = pendientes;
 }
 
 // ============================================
